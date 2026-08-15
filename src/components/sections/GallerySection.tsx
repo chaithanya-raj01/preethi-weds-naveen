@@ -43,8 +43,6 @@ export default function GallerySection() {
   const { gallery } = weddingData;
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-  
-  if (!gallery || gallery.length === 0) return null;
 
   const openLightbox = (index: number) => {
     setCurrentIndex(index);
