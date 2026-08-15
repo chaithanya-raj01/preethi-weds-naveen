@@ -14,8 +14,6 @@ interface FloatingPetalsProps {
  */
 export default function FloatingPetals({ count = 12, intensity = 'subtle' }: FloatingPetalsProps) {
   const prefersReducedMotion = useReducedMotion();
-  
-  if (prefersReducedMotion) return null;
 
   const opacityMap = { subtle: 0.25, medium: 0.4, strong: 0.55 };
   const baseOpacity = opacityMap[intensity];
@@ -43,6 +41,8 @@ export default function FloatingPetals({ count = 12, intensity = 'subtle' }: Flo
       return { id: i, size, left, delay, duration, swayAmount, rotateEnd, color, opacity: baseOpacity * (0.5 + Math.random() * 0.5) };
     });
   }, [count, baseOpacity]);
+
+  if (prefersReducedMotion) return null;
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none z-[5]" aria-hidden="true">

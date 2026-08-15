@@ -2,7 +2,12 @@
 
 import React, { useEffect, useState } from 'react';
 
-export default function FloatingParticles({ count = 20 }: { count?: number }) {
+interface FloatingParticlesProps {
+  count?: number;
+  color?: string;
+}
+
+export default function FloatingParticles({ count = 20, color }: FloatingParticlesProps) {
   const [particles, setParticles] = useState<Array<{ id: number; left: string; top: string; delay: string; duration: string; size: string }>>([]);
 
   useEffect(() => {
@@ -31,6 +36,7 @@ export default function FloatingParticles({ count = 20 }: { count?: number }) {
             top: p.top,
             width: p.size,
             height: p.size,
+            backgroundColor: color,
             animationDelay: p.delay,
             animationDuration: p.duration,
           }}

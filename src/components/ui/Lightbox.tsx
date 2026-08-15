@@ -9,7 +9,7 @@ import { durations, easings } from '@/lib/motion';
 interface LightboxProps {
   isOpen: boolean;
   onClose: () => void;
-  images: { src: string; caption: string }[];
+  images: readonly { src: string; caption: string }[];
   currentIndex: number;
   onNavigate: (index: number) => void;
 }
